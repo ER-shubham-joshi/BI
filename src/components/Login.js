@@ -22,39 +22,12 @@ export const Login = () => {
             isSubmitting: true,
             errorMessage: null
         });
-        // fetch("https://hookedbe.herokuapp.com/api/login", {
-        //   method: "post",
-        //   headers: {
-        //     "Content-Type": "application/json"
-        //   },
-        //   body: JSON.stringify({
-        //     username: data.email,
-        //     password: data.password
-        //   })
-        // })
-        //   .then(res => {
-        //     if (res.ok) {
-        //       return res.json();
-        //     }
-        //     throw res;
-        //   })
-        //   .then(resJson => {
-        //     dispatch({
-        //         type: "LOGIN",
-        //         payload: resJson
-        //     })
-        //   })
-        //   .catch(error => {
-        //     setData({
-        //       ...data,
-        //       isSubmitting: false,
-        //       errorMessage: error.message || error.statusText
-        //     });
-        //   });
 
+        // Hit Authentication Server
+        // TODO: Add Google Authentication
         // stubbing token response from auth server
         const resJson = {
-            user: "John Doe",
+            user: 'John Doe',
             token: 'access_token',
         }
         if (data.email === 'username@gmail.com' && data.password === 'password') {
