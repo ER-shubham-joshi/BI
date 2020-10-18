@@ -1,3 +1,17 @@
 import React from "react";
+import Tile from './HomeComponents/Tile';
+import TileData from './JSON/TileData.json';
 
-export default () => <div>This is the placeholder for HomePage.</div>;
+function Home() {
+
+    return (
+        <div>
+            {TileData.map((tileData) => {
+                return <div><span><Tile data={tileData} /></span></div>
+            })}
+        </div>
+    );
+}
+
+
+export default Home;
