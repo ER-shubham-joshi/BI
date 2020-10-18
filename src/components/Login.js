@@ -57,36 +57,34 @@ export const Login = (props) => {
     props.setShowLoginForm(false);
   };
   return (
-    <div className="login-container popup">
-      <div className="card">
-        <div className="container">
-          <Form>
-            <Form.Group controlId="formBasicEmail" onChange={handleInputChange}>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control name="email" type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
 
-            <Form.Group controlId="formBasicPassword" onChange={handleInputChange}>
-              <Form.Label>Password</Form.Label>
-              <Form.Control name="password" type="password" placeholder="Password" />
-            </Form.Group>
-            <div className="btn-grp">
-              <Button variant="primary" onClick={handleFormSubmit}>
-                Submit
+    <div className="container">
+      <Form>
+        <Form.Group controlId="formBasicEmail" onChange={handleInputChange}>
+          <Form.Label>Email address</Form.Label>
+          <Form.Control name="email" type="email" placeholder="Enter email" />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+              </Form.Text>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword" onChange={handleInputChange}>
+          <Form.Label>Password</Form.Label>
+          <Form.Control name="password" type="password" placeholder="Password" />
+        </Form.Group>
+        <div className="btn-grp">
+          <Button variant="primary" onClick={handleFormSubmit}>
+            Submit
             </Button>
-              <Button onClick={handleLoginFormClose} variant="secondary">Close</Button>
-            </div>
-          </Form>
-          {data.errorMessage && <div className="container"> <Alert variant={'warning'}>
-            Incorrect Username or Password provided. Please try again!
-            </Alert></div>
-          }
+          <Button onClick={handleLoginFormClose} variant="secondary">Close</Button>
         </div>
-      </div>
+      </Form>
+      {data.errorMessage && <div className="container"> <Alert variant={'warning'}>
+        Incorrect Username or Password provided. Please try again!
+            </Alert></div>
+      }
     </div>
+
   );
 };
 export default Login;

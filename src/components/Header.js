@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Badge, Modal, Navbar, Container, Nav, NavDropdown, Form, FormControl, Button, InputGroup, DropdownButton, Dropdown, Image } from 'react-bootstrap';
 import logo from '../brandLogo.png';
+import Login from './Login';
 
 function Header() {
     const [show, setShow] = useState(false);
@@ -39,7 +40,7 @@ function Header() {
                             <Modal.Header closeButton>
                                 <Modal.Title>Login</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>Login Page!</Modal.Body>
+                            <Modal.Body><Login /></Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={handleClose}>
                                     Close
