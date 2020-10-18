@@ -5,9 +5,9 @@ import TileData from './JSON/TileData.json';
 function Home() {
 
     return (
-        <div>
+        <div className="row">
             {TileData.map((tileData) => {
-                return <div><span><Tile data={tileData} /></span></div>
+                return <div><Tile data={tileData} /></div>
             })}
         </div>
     );
