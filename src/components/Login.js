@@ -1,5 +1,7 @@
 import React from 'react';
-
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import { AuthContext } from './HeaderContainer';
 
 export const Login = (props) => {
@@ -12,12 +14,14 @@ export const Login = (props) => {
   };
   const [data, setData] = React.useState(initialState);
   const handleInputChange = (event) => {
+    console.log(event.target)
     setData({
       ...data,
       [event.target.name]: event.target.value,
     });
   };
   const handleFormSubmit = (event) => {
+    console.log('form submit');
     event.preventDefault();
     setData({
       ...data,
@@ -32,6 +36,7 @@ export const Login = (props) => {
       user: 'John Doe',
       token: 'access_token',
     };
+    console.log('DATA', data);
     if (data.email === 'username@gmail.com' && data.password === 'password') {
       dispatch({
         type: 'LOGIN',
@@ -52,47 +57,33 @@ export const Login = (props) => {
     props.setShowLoginForm(false);
   };
   return (
-    <div className="login-container">
+    <div className="login-container popup">
       <div className="card">
         <div className="container">
-          <form onSubmit={handleFormSubmit}>
-            <h1>Login</h1>
+          <Form>
+            <Form.Group controlId="formBasicEmail" onChange={handleInputChange}>
+              <Form.Label>Email address</Form.Label>
+              <Form.Control name="email" type="email" placeholder="Enter email" />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text>
+            </Form.Group>
 
-            <label htmlFor="email">
-              Email Address
-              <input
-                type="text"
-                value={data.email}
-                onChange={handleInputChange}
-                name="email"
-                id="email"
-              />
-            </label>
-
-            <label htmlFor="password">
-              Password
-              <input
-                type="password"
-                value={data.password}
-                onChange={handleInputChange}
-                name="password"
-                id="password"
-              />
-            </label>
-
-            {data.errorMessage && (
-            <span className="form-error">{data.errorMessage}</span>
-            )}
-
-            <button disabled={data.isSubmitting}>
-              {data.isSubmitting ? (
-                'Loading...'
-              ) : (
-                'Login'
-              )}
-            </button>
-            <button onClick={handleLoginFormClose}> Close </button>
-          </form>
+            <Form.Group controlId="formBasicPassword" onChange={handleInputChange}>
+              <Form.Label>Password</Form.Label>
+              <Form.Control name="password" type="password" placeholder="Password" />
+            </Form.Group>
+            <div className="btn-grp">
+              <Button variant="primary" onClick={handleFormSubmit}>
+                Submit
+            </Button>
+              <Button onClick={handleLoginFormClose} variant="secondary">Close</Button>
+            </div>
+          </Form>
+          {data.errorMessage && <div className="container"> <Alert variant={'warning'}>
+            Incorrect Username or Password provided. Please try again!
+            </Alert></div>
+          }
         </div>
       </div>
     </div>
