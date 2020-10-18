@@ -1,3 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export default () => <div>This is the placeholder for HomePage.</div>;
+export const Home = () => (
+  <div className="home" />
+);
+export default Home;
